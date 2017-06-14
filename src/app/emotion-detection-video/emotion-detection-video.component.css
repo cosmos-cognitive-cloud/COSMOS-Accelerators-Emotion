@@ -1,0 +1,15 @@
+
+.component-container {
+    background-color: #fafafa;
+    padding-top:35px;
+}
+.filmstrip-row {
+    margin-top: 20px;
+}
+.filmstrip-row img {
+    height: 120px;
+}
+
+/*.api-description {
+    padding: 50px; 
+}*/

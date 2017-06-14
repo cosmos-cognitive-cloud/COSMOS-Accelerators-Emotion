@@ -1,0 +1,31 @@
+
+<div class="maindiv">    
+    <api-details-header 
+        apiTitle="Recognize Emotions in Video"
+        apiDescription="The Emotion API for Video recognizes the facial expressions of people in a video, and returns a summary of their emotions. You can use this API to track how a person or a crowd responds to your content over time. The emotions detected are anger, contempt, disgust, fear, happiness, neutral, sadness, and surprise."
+        rowStyleClass="tablerow2"
+    >
+        <div api-content>
+            <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8">
+                    <div class="video_container">
+                        <!--[poster]="selectedPoster"-->
+                        <video controls [src]="selectedImageUrl" *ngIf="isMobile">
+                            <source [src]="selectedImageUrl" type="video/mp4">
+                        </video>
+                        <video controls [src]="selectedImageUrl" autoplay loop *ngIf="!isMobile">
+                            <source [src]="selectedImageUrl" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="row filmstrip-row">
+                        <!--<div *ngFor="let imagePath of imageList;let i = index;" class="col-xs-4 filmstrip">
+                            <img [src]="posterList[i]" (click)="selectStockImage(imagePath)" [ngClass]="imagePath === internetImageUrl ? 'selected' : ''" />
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </api-details-header>
+</div>
+

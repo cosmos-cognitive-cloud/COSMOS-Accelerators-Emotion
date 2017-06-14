@@ -1,0 +1,19 @@
+
+.container {
+    padding-bottom: 50px;
+    margin: 0px;
+}
+.top-emotion {
+    position:absolute;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: black;
+}
+.filmstrip-row {
+    margin-top: 20px;
+}
+
+/*.api-description {
+    padding: 50px; 
+}*/

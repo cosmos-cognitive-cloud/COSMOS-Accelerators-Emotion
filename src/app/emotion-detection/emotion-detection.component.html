@@ -1,0 +1,72 @@
+<hero-banner [apiTitle]='apiTitle' [apiDescription]='apiDescription'
+             [apiBackgroundImage]='apiBackgroundImage' [apiReferenceUrl]='apiReferenceUrl'>
+</hero-banner>
+
+<div class="maindiv">    
+    <api-details-header 
+        apiTitle="Recognize Emotions in Images"
+        apiDescription="The Emotion Detection API builds on the Face Detection API and provides an analysis of the predicted emotions expressed in each face within the frame. The emotions currently enabled are: happiness, surprise, neutral, anger, contempt, disgust, fear, and sadness."
+        apiDescription2="To try out the Emotion Detection API, please click the image samples below generate example results."
+        rowStyleClass="tablerow1"
+    >
+        <div api-content (window:resize)="onResize($event)">
+            <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-lg-6 col-md-6">
+                    <div class="img_container">
+                        <img [src]="selectedImageUrl" alt="Selected Image" class="selected-image" (load)="selectedImageLoaded($event)" width="555" height="420" />
+                        <div *ngFor="let faceRectangle of faceRectangles; let i = index" 
+                                [style.top]="faceRectangle.percentTop + '%'" 
+                                [style.left]="faceRectangle.percentLeft +'%'"
+                                [style.width]="faceRectangle.percentWidth + '%'" 
+                                [style.height]="faceRectangle.percentHeight + '%'"
+                                [style.color]="emotionColor(topEmotion(i),true)"
+                                class="face-rectangle">
+                        </div>
+                        <div class="top-emotion" *ngFor="let faceRectangle of faceRectangles; let i = index" 
+                                [style.background-color]="emotionColor(topEmotion(i),false)" 
+                                [style.top]="(faceRectangle.percentTop + faceRectangle.percentHeight) + '%'" 
+                                [style.left]="faceRectangle.percentLeft +'%'"
+                                [style.min-width]="faceRectangle.percentWidth + '%'">
+                            <span>{{topEmotion(i)}}</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" data-defaultValue="Image URL" [(ngModel)]="internetImageUrl" />
+                            
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="button" (click)="onInternetUrlSelected()">
+                                <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                            </button>
+                            <label class="btn btn-default" type="button">
+                                <input type="file" (click)="onFilesClicked($event)" (change)="onFilesSelected($event)" accept="image/bmp,image/jpeg,image/png,image/gif">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <output-section style="height: 420px"
+                        [showButtons]="showCodeButtons" 
+                        [isApiResultLoading]="isLoading"
+                        buttonContextText="Results" 
+                        [showJSON]="!isLoading"
+                        jsonText="Number of faces: {{ emotions ? emotions.length : 0 }}&#10;{{ emotions | json }}"
+                    >
+                            <div formatted-output>
+                                
+                            </div>
+                    </output-section>
+                </div>
+            </div>
+            <!--
+            <div class="row filmstrip-row container">
+                <div *ngFor="let imagePath of imageList" class="col-xs-6 col-sm-4 col-md-3 col-lg-2 filmstrip">
+                    <img (click)="selectStockImage(imagePath)" [src]="imagePath" [ngClass]="imagePath === internetImageUrl ? 'selected' : ''" />
+                </div>
+            </div>-->
+        </div>
+    </api-details-header>
+
+
+    <emotion-detection-video></emotion-detection-video>
+</div>
