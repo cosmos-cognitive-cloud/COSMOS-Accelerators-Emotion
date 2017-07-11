@@ -1,6 +1,6 @@
 export class CognitiveApiService {
     subscriptionKeys = {
-// Add your own API keys here
+// Add your own API keys here - only API keys used by this accelerator are needed
     //  emotion: 'xxxxxx',
     //  textAnalytics: 'xxxxxx',
     //  computerVision: 'xxxxxx',
