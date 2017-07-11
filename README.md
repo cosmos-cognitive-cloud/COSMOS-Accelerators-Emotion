@@ -2,6 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
 
+# Add your COSMOS API Keys
+Find the file COSMOS-Accelerators-Emotion/src/app/services/cognitive-api.service.ts and add your own COSMOS API keys.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
